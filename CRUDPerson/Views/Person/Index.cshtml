@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CRUDPerson.Models.Person>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Pessoas</h1>
+<p>
+    <!-- uso de TagHelpers para definir o Controller e a Action -->
+    <a class="btn btn-sm btn-secondary"
+       asp-controller="Person" asp-action="Create">Nova Pessoa</a>
+</p>
+
+<!-- Verifica se a chave "Mensagem" existe no TempData -->
+@if (@TempData["Message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <!-- Imprime para o usuário a mensagem -->
+    @TempData["Message"]
+    </div>
+}
+
+<table class="table table-hover" border="1">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <label>@item.Id</label>
+            </td>
+            <td>
+                <label>@item.Name</label>
+            </td>
+            <td>
+                <label>@item.Address</label>
+            </td>
+            <td>
+                <!-- asp-route-id é usado para informar o Id do Item selecionado. -->
+                <a class="btn btn-sm btn-outline-secondary"
+               asp-controller="Person"
+               asp-action="Update"
+               asp-route-id="@item.Id">Editar</a>
+
+                <a class="btn btn-sm btn-outline-success"
+               asp-controller="Person"
+               asp-action="Read"
+               asp-route-id="@item.Id">Consultar</a>
+
+                <a class="btn btn-sm btn-outline-danger"
+               asp-controller="Person"
+               asp-action="Delete"
+               asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+    }
+</table>

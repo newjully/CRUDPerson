@@ -1,0 +1,32 @@
+﻿@model CRUDPerson.Models.Person;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Consultar Pessoa</h1>
+<div class="form-horizontal">
+    <hr />
+
+    <div class="form-group">
+        <label><b>Nome:</b></label>
+        <div class="col-md-10">
+            <span>@Model.Name</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label><b>Endereço:</b></label>
+        <div class="col-md-10">
+            <span>@Model.Address</span>
+        </div>
+    </div>
+
+    <hr />
+</div>
+<div>
+    <a class="btn btn-sm btn-outline-secondary"
+       asp-controller="Person" asp-action="Index">Voltar</a>
+</div>
+
+<br />

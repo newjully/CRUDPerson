@@ -1,0 +1,45 @@
+﻿@model CRUDPerson.Models.Person;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cadastrar Pessoa</h1>
+
+<!-- formulário HTML com Tag Helpers-->
+<form asp-action="Create" asp-controller="Person" method="post">
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control col-md-4" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address" class="control-label"></label>
+            <input asp-for="Address" class="form-control col-md-4" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input class="btn btn-sm btn-outline-danger"
+                    type="reset" value="Limpar" />
+                <!-- HTML Simple para envio dos dados do formulário -->
+                <input class="btn btn-sm btn-outline-success"
+                    type="submit" value="Cadastrar" />
+            </div>
+        </div>
+        <hr />
+    </div>
+</form>
+
+<div>
+    <a class="btn btn-sm btn-outline-secondary"
+        asp-controller="Person" asp-action="Index">Voltar</a>
+</div>
+
+<br />
